@@ -23,7 +23,7 @@ each `event` item contains the event name and a datas property with channel inde
 
 ```json
 {
-  "url": "http://127.0.0.1:37300/state/default",
+  "dmx-web-URL": "http://127.0.0.1:37300/state/default",
   "events": [
     {
       "name": "first",
