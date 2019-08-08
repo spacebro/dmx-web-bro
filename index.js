@@ -2,10 +2,11 @@
 
 const settings = require('standard-settings')
 const { SpacebroClient } = require('spacebro-client')
+const fetch = require('node-fetch')
 
 const verbose = settings.get('verbose') || false
-
 const events = settings.get('events')
+const URL = settings.get('dmx-web-URL')
 
 const client = new SpacebroClient({
   host: settings.get('spacebro:host') || '127.0.0.1',
@@ -20,7 +21,8 @@ const client = new SpacebroClient({
 
 events.forEach((event) => {
   client.on(event.name, () => {
-    window.fetch(settings.url, {
+    console.log(`sending "${event.name}"" event to ${URL}`)
+    fetch(URL, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
