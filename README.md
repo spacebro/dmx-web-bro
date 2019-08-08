@@ -2,8 +2,19 @@
 
 `dmx-web-bro` is a [spacebro](https://github.com/spacebro) tool that aims to forward spacebro events to a [dmx-web](https://github.com/node-dmx/dmx-web) server.
 
-```
+```bash
 $ npm install -g dmx-web
+```
+
+## Troubleshoot
+
+For the moment, the working version of dmx-web is [not available on npm](https://github.com/node-dmx/dmx-web/issues/5), so you have to manually clone the repository and use the source.
+
+```bash
+$ git clone https://github.com/node-dmx/dmx-web.git
+$ cd dmx-web
+$ npm i
+$ ./dmx-web.js [-c <full-path to config file>]
 ```
 
 ## configuration
