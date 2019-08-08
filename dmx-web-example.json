@@ -1,0 +1,17 @@
+{
+  "_title": "DMX Dashboard",
+  "server": {
+    "listen_port": 37300,
+    "listen_host": "::"
+  },
+  "presets": [],
+  "universes": {
+    "default": {
+      "output": {
+        "driver": "enttec-usb-dmx-pro",
+        "device": "/dev/cu.usbserial-EN255032"
+      },
+      "devices": []
+    }
+  }
+}
