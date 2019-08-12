@@ -19,16 +19,26 @@ const client = new SpacebroClient({
   verbose
 })
 
+
+
 events.forEach((event) => {
-  client.on(event.name, () => {
-    console.log(`sending "${event.name}"" event to ${URL}`)
-    fetch(URL, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(event.datas)
-    }).then(console.log)
+  client.on(event.name, (datas) => {
+    if (!event.requiredData || Object.values(datas).includes(event.requiredData)) {
+      console.log(`sending "${event.name}"" event to ${URL}`)
+      if (event.delay) console.log(`waiting ${event.delay}s...`)
+
+      setTimeout(() => {
+        fetch(URL, {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(event.datas)
+        }).then((res) => {
+          console.log(`"${event.name}" returned status ${res.status}`)
+        })
+      }, (event.delay || 0) * 1000)
+    }
   })
 })

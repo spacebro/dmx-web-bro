@@ -9,12 +9,14 @@
   "events": [
     {
       "name": "first",
+      "delay": 5,
       "datas": {
         "1": 0,
         "2": 255
       }
     }, {
       "name": "second",
+      "requiredData": "required-parameter",
       "datas": {
         "1": 255,
         "2": 120
