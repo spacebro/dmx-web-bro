@@ -1,25 +1,19 @@
 'use strict'
 
 const settings = require('standard-settings')
-const { SpacebroClient } = require('spacebro-client')
+const client = require('spacebro2-client')
 const fetch = require('node-fetch')
-
-const verbose = settings.get('verbose') || false
 const events = settings.get('events')
 const URL = settings.get('dmx-web-URL')
 
-const client = new SpacebroClient({
+client.setup({
   host: settings.get('spacebro:host') || '127.0.0.1',
-  port: settings.get('spacebro:port') || 8888,
-  channelName: settings.get('spacebro:channelName') || '',
+  port: settings.get('spacebro:port') || 9375,
   client: {
     name: 'dmx-web-bro',
     description: 'dmx-web forward tool'
-  },
-  verbose
+  }
 })
-
-
 
 events.forEach((event) => {
   client.on(event.name, (datas) => {
@@ -31,7 +25,7 @@ events.forEach((event) => {
         fetch(URL, {
           method: 'POST',
           headers: {
-            'Accept': 'application/json',
+            Accept: 'application/json',
             'Content-Type': 'application/json'
           },
           body: JSON.stringify(event.datas)

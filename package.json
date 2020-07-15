@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "node-fetch": "^2.6.0",
-    "spacebro-client": "^0.4.8",
-    "standard-settings": "^1.1.15"
+    "spacebro2-client": "spacebro/spacebro2-client",
+    "standard-settings": "2.0.3"
   }
 }

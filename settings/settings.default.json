@@ -1,7 +1,7 @@
 {
   "spacebro": {
     "host": "127.0.0.1",
-    "port": 8888,
+    "port": 9375,
     "channelName": "dmx-web-bro"
   },
   "verbose": false,
